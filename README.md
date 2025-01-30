@@ -1,0 +1,1 @@
+This is my ongoing full stack project (spotimy) where I'm essentially trying to provide Spotify user's a more detailed and insightful "Spotify Wrapped" based on their listening data. So far I've laid the foundation for authentication and grabbing user data with auth tokens. Given time, I plan on implementing react for front end visualizations.
