@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Playlists</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .playlist {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Your Spotify Playlists</h1>
+    <div id="playlistsContainer">Loading playlists...</div>
+
+    <script>
+        // fetch playlists
+        async function fetchPlaylists() {
+            try {
+                const response = await fetch('/playlists');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch playlists');
+                }
+
+                const data = await response.json();
+                const playlistsContainer = document.getElementById('playlistsContainer');
+
+                // clear loading message
+                playlistsContainer.innerHTML = '';
+
+                // check if there are playlists
+                if (data.items && data.items.length > 0) {
+                    data.items.forEach(playlist => {
+                        const playlistDiv = document.createElement('div');
+                        playlistDiv.className = 'playlist';
+
+                        // add playlist details
+                        playlistDiv.innerHTML = `
+                        <h3>${playlist.name}</h3>
+                        <p>Tracks: ${playlist.tracks.total}</p>
+                        <a href="${playlist.external_urls.spotify}" target="_blank">Open in Spotify</a>
+                        `;
+
+                        playlistsContainer.appendChild(playlistDiv);
+                    });
+                } else {
+                    playlistsContainer.innerHTML = '<p>No playlists found.</p>';
+                }
+            } catch (error) {
+                console.error(error);
+                document.getElementById('playlistsContainer').innerHTML = '<p>Error loading playlists.</p>';
+            }
+        }
+
+        // fetch playlist on page load
+        fetchPlaylists();
+    </script>
+</body>
+</html>
