@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 
 // login route
 app.get('/login', (req, res) => {
-  const scope = 'user-read-private user-read-email';
+  const scope = 'user-read-private user-read-email playlist-read-private';
   const params = querystring.stringify({
     client_id: CLIENT_ID,
     response_type: 'code',
