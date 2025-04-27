@@ -1,0 +1,22 @@
+spotimy/
+├── client/                 # React frontend
+│   ├── public/             # Public assets
+│   ├── src/                # React source code
+│   │   ├── components/     # React components
+│   │   ├── pages/          # Page components
+│   │   ├── services/       # API service layer
+│   │   ├── context/        # React context
+│   │   ├── App.js          # Main app component
+│   │   └── index.js        # Entry point
+│   ├── package.json        # Frontend dependencies
+│   └── .env                # Frontend environment variables
+│
+├── server/                 # Node/Express backend
+│   ├── routes/             # API routes
+│   ├── models/             # Database models
+│   ├── controllers/        # Request handlers
+│   ├── server.js           # Server entry point
+│   ├── package.json        # Backend dependencies
+│   └── .env                # Backend environment variables
+│
+└── package.json            # Root package.json (optional)
